@@ -5,6 +5,7 @@ import json
 from .Aclmenu import Aclmenu
 from .Aclaction import Aclaction
 from .Aclgroup import Aclgroup
+from .Aclresource import Aclresource
 
 
 def parse_export(exportData: str) -> dict:
@@ -17,6 +18,8 @@ def parse_export(exportData: str) -> dict:
         if exportLine.startswith('ACLACTION;'):
             parsedData = Aclaction.parse(exportLine)
         if exportLine.startswith('ACLGROUP;'):
+            parsedData = Aclgroup.parse(exportLine)
+        if exportLine.startswith('ACLRESOURCE;'):
             parsedData = Aclgroup.parse(exportLine)
 
         if parsedData is None:
@@ -43,5 +46,7 @@ def parse_export(exportData: str) -> dict:
                 data[centreonTypeObject][centreonObjectName] = Aclaction.construct(centreonObjectValues)
             if centreonTypeObject == 'ACLGROUP':
                 data[centreonTypeObject][centreonObjectName] = Aclgroup.construct(centreonObjectValues)
+            if centreonTypeObject == 'ACLRESOURCE':
+                data[centreonTypeObject][centreonObjectName] = Aclresource.construct(centreonObjectValues)
 
     return data
