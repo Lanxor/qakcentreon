@@ -1,0 +1,8 @@
+[run]
+command_line = -m unittest discover -s tests
+
+[report]
+omit =
+    tests\*
+    *__init__.py
+show_missing = True
