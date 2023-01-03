@@ -6,6 +6,7 @@ from .Aclmenu import Aclmenu
 from .Aclaction import Aclaction
 from .Aclgroup import Aclgroup
 from .Aclresource import Aclresource
+from .Command import Command
 
 
 def parse_export(exportData: str) -> dict:
@@ -21,6 +22,8 @@ def parse_export(exportData: str) -> dict:
             parsedData = Aclgroup.parse(exportLine)
         if exportLine.startswith('ACLRESOURCE;'):
             parsedData = Aclgroup.parse(exportLine)
+        if exportLine.startswith('CMD;'):
+            parsedData = Command.parse(exportLine)
 
         if parsedData is None:
             continue
@@ -48,5 +51,7 @@ def parse_export(exportData: str) -> dict:
                 data[centreonTypeObject][centreonObjectName] = Aclgroup.construct(centreonObjectValues)
             if centreonTypeObject == 'ACLRESOURCE':
                 data[centreonTypeObject][centreonObjectName] = Aclresource.construct(centreonObjectValues)
+            if centreonTypeObject == 'CMD':
+                data[centreonTypeObject][centreonObjectName] = Command.construct(centreonObjectValues)
 
     return data
