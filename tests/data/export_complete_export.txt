@@ -1,0 +1,16 @@
+ACLMENU;ADD;menuName;menuAlias;
+ACLMENU;SETPARAM;menuName;alias;menuAlias;
+ACLMENU;SETPARAM;menuName;activate;0;
+ACLMENU;SETPARAM;menuName;comment;menuComment;
+ACLMENU;GRANTRW;menuName;0;firstMenu;
+ACLMENU;GRANTRW;menuName;0;secondMenu;
+ACLMENU;GRANTRO;menuName;0;thirdMenu;
+ACLMENU;GRANTRO;menuName;0;fourthMenu;
+ACLMENU;REVOKE;menuName;0;fifthMenu;
+ACLMENU;REVOKE;menuName;0;sixthMenu;
+ACLACTION;ADD;actionName;actionDescription;
+ACLACTION;SETPARAM;actionName;activate;0;
+ACLACTION;GRANT;actionName;firstAction|secondAction
+ACLACTION;REVOKE;actionName;thirdAction|fourthAction
+ACLGROUP;ADD;groupName;groupAlias
+ACLGROUP;SETPARAM;actionName;activate;0;
